@@ -1,0 +1,39 @@
+# Google Maps Business Profile Analyzer - Dependências
+# Instale com: pip install -r requirements.txt
+
+# Core
+requests>=2.31.0
+pandas>=2.0.0
+numpy>=1.24.0
+openpyxl>=3.1.0
+
+# Configuração
+pyyaml>=6.0
+
+# Logging e utilities
+python-dateutil>=2.8.0
+
+# Visualização (opcional)
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Análise de texto (opcional - para análise avançada de reviews)
+textblob>=0.17.0
+
+# Formatação de relatórios (opcional)
+jinja2>=3.1.0
+
+# Rate limiting
+ratelimit>=2.2.0
+
+# Cache (opcional)
+diskcache>=5.6.0
+
+# Análise geoespacial avançada (opcional)
+geopy>=2.3.0
+
+# Exportação PDF (opcional)
+reportlab>=4.0.0
+
+# Progress bars
+tqdm>=4.65.0

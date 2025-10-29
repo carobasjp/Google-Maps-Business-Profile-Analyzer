@@ -1,0 +1,188 @@
+# Configuração da Ferramenta de Análise de Ranqueamento
+# Google Maps Business Profile Analyzer
+
+# ============================================================================
+# CONFIGURAÇÕES DA API
+# ============================================================================
+api:
+  key: "SUA_API_KEY_AQUI"  # Substitua pela sua chave do Google Maps API
+  timeout: 15  # Timeout em segundos para requisições
+  rate_limit_delay: 0.5  # Delay entre requisições (segundos)
+
+# ============================================================================
+# PARÂMETROS DE BUSCA
+# ============================================================================
+search:
+  # Localização central (latitude,longitude)
+  # Exemplos:
+  #   São Paulo: "-23.55052,-46.633308"
+  #   Rio de Janeiro: "-22.9068,-43.1729"
+  #   Belo Horizonte: "-19.9167,-43.9345"
+  location: "-23.55052,-46.633308"
+  
+  # Raio de busca em metros (máximo recomendado: 50000)
+  radius: 2000
+  
+  # Palavra-chave para busca
+  keyword: "padaria"
+  
+  # Número máximo de páginas de resultados (cada página = ~20 resultados)
+  max_pages: 3
+  
+  # Buscar múltiplas palavras-chave (opcional)
+  multiple_keywords:
+    enabled: false
+    keywords:
+      - "padaria"
+      - "confeitaria"
+      - "bakery"
+
+# ============================================================================
+# PESOS PARA CÁLCULO DE SCORE (soma = 1.0)
+# ============================================================================
+weights:
+  rating_quality: 0.25      # Qualidade das avaliações
+  review_velocity: 0.20     # Velocidade de aquisição de reviews
+  completeness: 0.15        # Completude do perfil
+  authority: 0.20           # Autoridade do negócio
+  prominence: 0.10          # Proeminência na busca
+  relevance: 0.10           # Relevância para palavra-chave
+
+# ============================================================================
+# CONFIGURAÇÕES DE ANÁLISE
+# ============================================================================
+analysis:
+  # Incluir análise detalhada de reviews (requer mais tempo)
+  include_review_analysis: false
+  
+  # Número de reviews mais recentes para analisar
+  recent_reviews_count: 10
+  
+  # Incluir análise de fotos
+  include_photo_analysis: true
+  
+  # Incluir análise de horários de funcionamento
+  include_hours_analysis: true
+
+# ============================================================================
+# CONFIGURAÇÕES DE RELATÓRIOS
+# ============================================================================
+reports:
+  # Diretório de saída
+  output_directory: "output"
+  
+  # Formatos de saída
+  formats:
+    csv: true
+    excel: true
+    json: true
+    txt_summary: true
+    html: false  # Relatório HTML interativo (futuro)
+  
+  # Incluir gráficos (requer matplotlib)
+  include_charts: true
+  
+  # Incluir comparação com concorrentes específicos
+  competitor_analysis:
+    enabled: false
+    competitor_place_ids:
+      - "ChIJN1t_tDeuEmsRUsoyG83frY4"
+      - "ChIJrTLr-GyuEmsRBfy61i59si0"
+
+# ============================================================================
+# CATEGORIAS DE FORÇA
+# ============================================================================
+strength_categories:
+  dominant:
+    min_score: 90
+    max_score: 100
+    label: "🏆 DOMINANTE"
+    color: "#00C851"
+  
+  very_strong:
+    min_score: 80
+    max_score: 90
+    label: "💪 MUITO FORTE"
+    color: "#33B679"
+  
+  strong:
+    min_score: 70
+    max_score: 80
+    label: "✅ FORTE"
+    color: "#FFBB33"
+  
+  good:
+    min_score: 60
+    max_score: 70
+    label: "📊 BOM"
+    color: "#FF8800"
+  
+  average:
+    min_score: 50
+    max_score: 60
+    label: "⚠️ MÉDIO"
+    color: "#FF4444"
+  
+  weak:
+    min_score: 40
+    max_score: 50
+    label: "📉 FRACO"
+    color: "#CC0000"
+  
+  very_weak:
+    min_score: 0
+    max_score: 40
+    label: "🚨 MUITO FRACO"
+    color: "#880000"
+
+# ============================================================================
+# CONFIGURAÇÕES AVANÇADAS
+# ============================================================================
+advanced:
+  # Cache de resultados
+  enable_cache: true
+  cache_expiry_hours: 24
+  
+  # Logging
+  log_level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  log_file: "gmb_analyzer.log"
+  
+  # Retry em caso de erro
+  max_retries: 3
+  retry_delay: 2
+  
+  # Exportar dados brutos
+  export_raw_data: false
+
+# ============================================================================
+# ALERTAS E NOTIFICAÇÕES
+# ============================================================================
+notifications:
+  # Enviar email ao concluir análise
+  email:
+    enabled: false
+    smtp_server: "smtp.gmail.com"
+    smtp_port: 587
+    sender: "seu-email@gmail.com"
+    password: "sua-senha-app"
+    recipients:
+      - "destinatario@example.com"
+  
+  # Webhook para integração com outras ferramentas
+  webhook:
+    enabled: false
+    url: "https://hooks.slack.com/services/YOUR/WEBHOOK/URL"
+
+# ============================================================================
+# BENCHMARKS E METAS
+# ============================================================================
+benchmarks:
+  # Define metas para diferentes métricas
+  targets:
+    min_rating: 4.0
+    min_reviews: 50
+    min_overall_score: 70
+    target_position: 3
+  
+  # Alertar se abaixo das metas
+  alert_on_below_target: true
