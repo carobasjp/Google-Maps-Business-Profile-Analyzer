@@ -626,7 +626,7 @@ Este projeto é fornecido "como está", sem garantias. Use por sua própria resp
 
 Para dúvidas, sugestões ou reportar bugs:
 
-- 📧 Email: suporte@exemplo.com
+- 📧 Email: carobaanimes@gmail.com
 - 💬 Issues: GitHub Issues
 - 📚 Documentação: [Wiki do projeto]
 
@@ -636,7 +636,6 @@ Para dúvidas, sugestões ou reportar bugs:
 
 - Google Maps Platform
 - Comunidade Python
-- Contribuidores do projeto
 
 ---
 
